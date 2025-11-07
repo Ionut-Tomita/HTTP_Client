@@ -1,122 +1,135 @@
-325CD - Tomita Ionut
+# 👨‍💻 325CD - Tomita Ionut
 
+# 🌐 Client HTTP în C pentru interacțiunea cu un REST API
 
-# Client HTTP in C pentru interactiunea cu un REST API
+📘 **Descriere:**
 
-    Clientul este un program scris în C care accepta comenzi de la tastatura (stdin)
-    şi trimite, in functie de comanda, cereri către server. Scopul lui este de a functiona
-    ca o interfata in linia de comanda (CLI) cu biblioteca virtuala simulata de catre server.
-    Acesta va expune un API (Application Programmable Interface) de tip REST
-    (Representational State Transfer), si va primi o serie de intrări reprezentate de rute
-    HTTP. În urma cererilor HTTP, serverul efectuează o acţiune si returnează un răspuns
-    HTTP. Clientul va interpreta răspunsul primit si va afisa un mesaj corespunzător.
+Clientul este un program scris în C care acceptă comenzi de la tastatură (stdin)  
+și trimite, în funcție de comandă, cereri către server. Scopul lui este de a funcționa  
+ca o interfață în linia de comandă (CLI) cu biblioteca virtuală simulată de către server.  
+Acesta va expune un API (Application Programmable Interface) de tip **REST**  
+(Representational State Transfer) și va primi o serie de intrări reprezentate de rute **HTTP**.  
+În urma cererilor HTTP, serverul efectuează o acțiune și returnează un răspuns HTTP.  
+Clientul va interpreta răspunsul primit și va afișa un mesaj corespunzător.
 
-## Obiective:
+---
 
-- Intelegerea mecanismelor protocolului HTTP
-- Interactiunea cu un REST API
-- Intelegerea conceptelor des folosite in web precum JSON, sesiune, JWT
-- Utilizarea unor biblioteci externe pentru manipularea obiectelor JSON REST API
+## 🎯 Obiective:
 
+- 🧠 Înțelegerea mecanismelor protocolului **HTTP**
+- 🔗 Interacțiunea cu un **REST API**
+- 📦 Înțelegerea conceptelor des folosite în web precum **JSON**, **sesiune**, **JWT**
+- 🧰 Utilizarea unor biblioteci externe pentru manipularea obiectelor **JSON REST API**
 
-## Mod de functionare:
+---
 
-    Clientul interpreteaza comenzile de la tastatura pentru a putea comunica cu serverul.
-    In urma primirii comenzii, clientul va forma obiectul JSON (daca e cazul) vaexecuta
-    cererea catre server si va interpreta raspunsul primit. In functie de raspuns, clientul
-    va afisa mesajul coresponzator de succes sau de eroare.
+## ⚙️ Mod de funcționare:
 
-## Comenzile implementate:
+Clientul interpretează comenzile de la tastatură pentru a putea comunica cu serverul.  
+În urma primirii comenzii, clientul va forma obiectul **JSON** (dacă e cazul), va executa  
+cererea către server și va interpreta răspunsul primit. În funcție de răspuns, clientul  
+va afișa mesajul corespunzător de succes sau de eroare.
 
-- `register` - efectueaza inregistrarea
-- `login` - efectueaza autehntificarea
-- `enter_library` - cere accesul la biblioteca
-- `get_books` - cere lista de carti
-- `get_book` - cere informatii despre o carte
-- `add_book` - adauga o carte
-- `delete_book` - sterge o carte
-- `logout` - efectueaza delogarea
-- `exit` - iesirea din aplicatie
+---
 
+## 💻 Comenzile implementate:
 
-## Implementare:
+- 📝 `register` - efectuează înregistrarea  
+- 🔐 `login` - efectuează autentificarea  
+- 📚 `enter_library` - cere accesul la bibliotecă  
+- 📖 `get_books` - cere lista de cărți  
+- 📘 `get_book` - cere informații despre o carte  
+- ➕ `add_book` - adaugă o carte  
+- 🗑️ `delete_book` - șterge o carte  
+- 🚪 `logout` - efectuează delogarea  
+- ❌ `exit` - ieșirea din aplicație  
 
-### Structura fisierelor:
+---
 
-Proiectul este structurat in mai multe fisiere, fiecare cu rolul sau:
+## 🧩 Implementare:
 
-- `client.c` - fisierul principal al clientului, aici se afla functia principala main
-si logica de procesare a comenzilor
-- `helpers.c` si `helpers.h` - contine functii ajutatoare pentru parsarea raspunsurilor 
-de la si catre server, si de asemenea pentru deschiderea si inchiderea conexiunii catre
-server
-- `requests.c` si `requests.h` - contine functiile pentru construirea cererilor HTTP
-  (GET, POST, DELETE) catre server
+### 📂 Structura fișierelor:
 
+Proiectul este structurat în mai multe fișiere, fiecare cu rolul său:
 
-### Functia principala:
-Functia main este responsabila pentru bucla principala de executie a programului.
-Aici se citeste comanda de la tastatura, se deschide conexiunea cu serverul, se executa
-comanda coresponzatoare si se afiseaza rezultatele.
+- `client.c` – fișierul principal al clientului; aici se află funcția principală **main**  
+  și logica de procesare a comenzilor.  
+- `helpers.c` și `helpers.h` – conțin funcții ajutătoare pentru parsarea răspunsurilor  
+  de la și către server, precum și pentru deschiderea și închiderea conexiunii.  
+- `requests.c` și `requests.h` – conțin funcțiile pentru construirea cererilor **HTTP**
+  (**GET**, **POST**, **DELETE**) către server.  
 
-### Comenzi:
+---
 
-- `register` - este apelată pentru a inregistra un nou utilizator. Aceasta colecteaza
-numele de utilizator și parola, valideaza intrarile și trimite o cerere POST la server.
-In urma raspunsului, se afiseaza un mesaj corespunzator.
+### 🧠 Funcția principală:
 
-- `login` - este apelată pentru a autentifica un utilizator. Aceasta colecteaza numele
-de utilizator și parola, valideaza intrarile și trimite o cerere POST la server.
-In urma raspunsului, se afiseaza un mesaj corespunzator.
+Funcția **main** este responsabilă pentru bucla principală de execuție a programului.  
+Aici se citește comanda de la tastatură, se deschide conexiunea cu serverul, se execută  
+comanda corespunzătoare și se afișează rezultatele.
 
-- `enter_library` - este apelată pentru a cere accesul la biblioteca. Aceasta trimite
-o cerere GET la server pentru a obtine un token JWT. In urma raspunsului, se afiseaza
-un mesaj corespunzator.
+---
 
-- `get_books` - este apelată pentru a cere lista de carti. Aceasta trimite o cerere GET
-la server pentru a obtine lista de carti. In urma raspunsului, se afiseaza un mesaj
-corespunzator.
+### 🧾 Comenzi detaliate:
 
-- `get_book` - este apelată pentru a cere informatii despre o carte. Aceasta colecteaza
-id-ul cartii, valideaza intrarea si trimite o cerere GET la server pentru a obtine
-informatii despre carte. In urma raspunsului, se afiseaza un mesaj corespunzator.
+- 📝 **`register`** – este apelată pentru a înregistra un nou utilizator. Aceasta colectează  
+  numele de utilizator și parola, validează intrările și trimite o cerere **POST** la server.  
+  În urma răspunsului, se afișează un mesaj corespunzător.
 
-- `add_book` - este apelată pentru a adauga o carte. Aceasta colecteaza titlul, autorul,
-genul, editorul si numarul de pagini al cartii, creaza un obiect JSON si trimite o cerere
-POST la server pentru a adauga cartea. In urma raspunsului, se afiseaza un mesaj corespunzator.
+- 🔐 **`login`** – este apelată pentru a autentifica un utilizator. Aceasta colectează  
+  numele de utilizator și parola, validează intrările și trimite o cerere **POST** la server.  
+  În urma răspunsului, se afișează un mesaj corespunzător.
 
-- `delete_book` - este apelată pentru a sterge o carte. Aceasta colecteaza id-ul cartii,
-valideaza intrarea si trimite o cerere DELETE la server pentru a sterge cartea. In urma
-raspunsului, se afiseaza un mesaj corespunzator.
+- 📚 **`enter_library`** – este apelată pentru a cere accesul la bibliotecă. Aceasta trimite  
+  o cerere **GET** la server pentru a obține un token **JWT**. În urma răspunsului, se afișează  
+  un mesaj corespunzător.
 
-- `logout` - este apelată pentru a deloga utilizatorul. Aceasta trimite o cerere GET la
-server pentru a deloga utilizatorul. In urma raspunsului, se afiseaza un mesaj corespunzator.
+- 📖 **`get_books`** – este apelată pentru a cere lista de cărți. Trimite o cerere **GET**  
+  la server și afișează lista obținută sau mesajul corespunzător de eroare.
 
-- `exit` - este apelată pentru a iesi din aplicatie.
+- 📘 **`get_book`** – este apelată pentru a cere informații despre o carte. Colectează  
+  ID-ul cărții, validează intrarea și trimite o cerere **GET** pentru a obține informațiile.  
 
+- ➕ **`add_book`** – este apelată pentru a adăuga o carte. Colectează titlul, autorul,  
+  genul, editorul și numărul de pagini, creează un obiect **JSON** și trimite o cerere  
+  **POST** către server.  
 
-### Functii de validare a intrarilor:
+- 🗑️ **`delete_book`** – este apelată pentru a șterge o carte. Colectează ID-ul, validează  
+  intrarea și trimite o cerere **DELETE** la server.  
 
-    contain_spaces - verifica daca un string contine spatii
-    contain_only_spaces - verifica daca un string contine doar spatii
-    contains_digits - verifica daca un string contine cifre
+- 🚪 **`logout`** – este apelată pentru a deloga utilizatorul. Trimite o cerere **GET**  
+  către server și afișează mesajul de confirmare.  
 
-### Mesaje de eroare:
+- ❌ **`exit`** – este apelată pentru a ieși din aplicație.  
 
-    error_message - extrage si afiseaza mesajele de eroare din raspunsurile serverului
+---
 
-Pentru parsarea raspunsurilor de la server, am folosit biblioteca parson deoarece
-are o interfata simpla si usor de folosit, chiar daca nu eram familiarizat cu 
-manipularea JSON in limbajul C. Dupa ce m-am documentat putin am inteles ca ofera
-multe functionalitati necesare, cum ar fi crearea, parsarea, modificarea si 
-serializarea obiectelor JSON. De asemenea este o biblioteca portabilă, eficienta
-si rapida, ceea ce e esential pentru aplicatii care necesita parsarea rapida si
-frecventa a obiectelor JSON.
+### 🧮 Funcții de validare a intrărilor:
 
+- ⚠️ `contain_spaces` – verifică dacă un string conține spații  
+- ⚠️ `contain_only_spaces` – verifică dacă un string conține doar spații  
+- ⚠️ `contains_digits` – verifică dacă un string conține cifre  
 
-### Exemplu de rulare:
+---
 
-Pentru rularea utomata a clientului, se poate folosi comanda:
+### 🚫 Mesaje de eroare:
 
-    python3 checkr/checker.py --script ALL ./client
-    
+- ❗ `error_message` – extrage și afișează mesajele de eroare din răspunsurile serverului  
+
+Pentru parsarea răspunsurilor de la server, s-a folosit biblioteca **Parson**,  
+deoarece are o interfață simplă și ușor de utilizat, chiar și pentru cineva nefamiliarizat  
+cu manipularea **JSON** în limbajul C.  
+
+După o scurtă documentare, am observat că oferă toate funcționalitățile necesare:
+- Crearea, parsarea și modificarea obiectelor JSON  
+- Serializarea acestora  
+- Performanță bună, portabilitate și eficiență — ideale pentru aplicații care necesită  
+parsare rapidă și frecventă a obiectelor JSON.  
+
+---
+
+### ▶️ Exemplu de rulare:
+
+Pentru rularea automată a clientului, se poate folosi comanda:
+
+```bash
+python3 checkr/checker.py --script ALL ./client
