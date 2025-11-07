@@ -1,4 +1,3 @@
-# 👨‍💻 325CD - Tomita Ionut
 
 # 🌐 Client HTTP în C pentru interacțiunea cu un REST API
 
